@@ -141,7 +141,8 @@
   }
   .nav-mark{
     display:flex; align-items:center; gap:10px;
-    font-family:'Fraunces', serif; font-weight:500; font-size:19px; color:var(--sage-deep);
+    font-family:'Fraunces', serif; font-weight:500; font-size:17px; color:var(--sage-deep);
+    white-space:nowrap;
   }
   .nav-mark .bulb{width:26px; height:26px;}
   .nav-links{display:flex; gap:34px; font-size:14px; letter-spacing:0.02em;}
@@ -338,6 +339,7 @@
 
   @media (max-width: 860px){
     .nav-links{display:none;}
+    .nav-mark{font-size:14px;}
     .legacy-grid, .visit-grid, .teachers-grid{grid-template-columns:1fr;}
     .pricing-row{grid-template-columns:1fr;}
     .month-list{grid-template-columns:repeat(2,1fr);}
@@ -356,7 +358,7 @@
 <nav class="nav" id="nav">
   <div class="nav-mark">
     <img class="bulb" src="icon-192.png" alt="Ferment Space mark" style="border-radius:50%;">
-    Ferment Space
+    Ferment Space Cooking School
   </div>
   <div class="nav-links">
     <a href="#legacy">Our Story</a>
