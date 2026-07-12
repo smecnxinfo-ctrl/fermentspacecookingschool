@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ferment Space Cooking School — Chiang Mai</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F3EEE2;
+    --cream-deep:#E9E1CE;
+    --sage:#4B5A40;
+    --sage-deep:#333F2C;
+    --clay:#A8623F;
+    --clay-deep:#824A2E;
+    --ink:#2A2820;
+    --line: rgba(42,40,32,0.14);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    font-weight:400;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    letter-spacing:-0.01em;
+    margin:0;
+    color:var(--sage-deep);
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--clay-deep);
+  }
+  a{color:inherit;}
+  img{display:block; width:100%; height:100%; object-fit:cover;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 32px;}
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:20px 40px;
+    mix-blend-mode:normal;
+    transition:background .3s ease, padding .3s ease, box-shadow .3s ease;
+  }
+  .nav.scrolled{
+    background:rgba(243,238,226,0.92);
+    backdrop-filter:blur(8px);
+    padding:12px 40px;
+    box-shadow:0 1px 0 var(--line);
+  }
+  .nav-mark{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Fraunces', serif; font-weight:500; font-size:19px; color:var(--sage-deep);
+  }
+  .nav-mark .bulb{width:26px; height:26px;}
+  .nav-links{display:flex; gap:34px; font-size:14px; letter-spacing:0.02em;}
+  .nav-links a{text-decoration:none; opacity:0.82; transition:opacity .2s;}
+  .nav-links a:hover{opacity:1;}
+  .nav-cta{
+    font-size:13px; font-family:'IBM Plex Mono', monospace; letter-spacing:0.06em;
+    border:1px solid var(--sage-deep); padding:9px 18px; border-radius:2px;
+    text-decoration:none; text-transform:uppercase;
+  }
+  .burger{display:none;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative; min-height:100vh; display:flex; align-items:flex-end;
+    overflow:hidden;
+  }
+  .hero-media{position:absolute; inset:0;}
+  .hero-media img{width:100%;height:100%;object-fit:cover; filter:saturate(1.02);}
+  .hero-media::after{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(30,32,20,0.15) 0%, rgba(30,32,20,0.08) 35%, rgba(24,26,16,0.72) 100%);
+  }
+  .hero-content{
+    position:relative; z-index:2; color:var(--cream); padding:0 40px 72px;
+    width:100%;
+  }
+  .hero-badge{
+    display:inline-flex; align-items:center; gap:8px;
+    border:1px solid rgba(243,238,226,0.55); border-radius:999px;
+    padding:6px 14px 6px 8px; font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px; letter-spacing:0.12em; text-transform:uppercase; margin-bottom:26px;
+    background:rgba(0,0,0,0.18);
+  }
+  .hero-badge .dot{width:7px; height:7px; border-radius:50%; background:var(--clay); display:inline-block;}
+  .hero h1{
+    font-size:clamp(44px, 7vw, 96px); line-height:0.98; color:#fff; max-width:920px;
+    font-weight:400;
+  }
+  .hero h1 em{font-style:italic; color:var(--cream-deep); font-weight:300;}
+  .hero-sub{
+    max-width:520px; font-size:16.5px; line-height:1.6; margin-top:22px; color:rgba(243,238,226,0.86);
+  }
+  .hero-row{
+    display:flex; align-items:center; gap:28px; margin-top:38px; flex-wrap:wrap;
+  }
+  .btn-primary{
+    background:var(--clay); color:#fff; text-decoration:none;
+    padding:15px 30px; font-family:'IBM Plex Mono', monospace; font-size:13px;
+    letter-spacing:0.06em; text-transform:uppercase; border-radius:2px;
+    transition:background .2s;
+  }
+  .btn-primary:hover{background:var(--clay-deep);}
+  .hero-stat{font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:rgba(243,238,226,0.75); line-height:1.5;}
+  .hero-stat b{color:#fff; display:block; font-size:15px; font-family:'Fraunces',serif; font-weight:500;}
+  .hero-scroll{
+    position:absolute; right:40px; bottom:36px; z-index:2; color:rgba(243,238,226,0.7);
+    font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.14em;
+    writing-mode:vertical-rl; display:flex; align-items:center; gap:10px;
+  }
+  .hero-scroll::after{content:""; width:1px; height:44px; background:rgba(243,238,226,0.5);}
+
+  /* ---------- SECTION shared ---------- */
+  section{padding:110px 0;}
+  .section-head{max-width:640px; margin-bottom:56px;}
+  .section-head h2{font-size:clamp(30px,4vw,46px); margin-top:14px; line-height:1.08;}
+  .section-head p{font-size:16px; line-height:1.65; margin-top:16px; color:rgba(42,40,32,0.78); max-width:540px;}
+
+  /* ---------- LEGACY ---------- */
+  .legacy{background:var(--sage-deep); color:var(--cream);}
+  .legacy .eyebrow{color:var(--cream-deep);}
+  .legacy .section-head h2{color:#fff;}
+  .legacy .section-head p{color:rgba(243,238,226,0.75);}
+  .legacy-grid{
+    display:grid; grid-template-columns:0.85fr 1.15fr; gap:64px; align-items:center;
+  }
+  .legacy-photo{position:relative;}
+  .legacy-photo .frame{
+    border:10px solid var(--cream); box-shadow:0 30px 60px rgba(0,0,0,0.35);
+    max-width:340px; transform:rotate(-2.5deg);
+  }
+  .legacy-photo .frame img{aspect-ratio:3/4;}
+  .legacy-photo .cap{
+    font-family:'IBM Plex Mono', monospace; font-size:11.5px; margin-top:18px;
+    color:rgba(243,238,226,0.6); max-width:300px; letter-spacing:0.02em;
+  }
+  .legacy-text p{font-size:16.5px; line-height:1.75; color:rgba(243,238,226,0.88); margin-bottom:20px;}
+  .legacy-text p:first-child{font-family:'Fraunces',serif; font-size:22px; line-height:1.5; color:#fff; font-weight:400;}
+  .lineage{
+    display:flex; gap:0; margin-top:36px; border-top:1px solid rgba(243,238,226,0.2); padding-top:28px;
+  }
+  .lineage-step{flex:1; padding-right:20px;}
+  .lineage-step .num{font-family:'IBM Plex Mono',monospace; color:var(--clay); font-size:12px;}
+  .lineage-step .who{font-family:'Fraunces',serif; font-size:19px; margin-top:6px; color:#fff;}
+  .lineage-step .what{font-size:13px; color:rgba(243,238,226,0.65); margin-top:4px; line-height:1.5;}
+
+  /* ---------- TEACHERS ---------- */
+  .teachers-grid{display:grid; grid-template-columns:1fr 1fr; gap:48px;}
+  .teacher-card{background:#fff; border:1px solid var(--line); border-radius:4px; overflow:hidden;}
+  .teacher-photo{aspect-ratio:4/3;}
+  .teacher-body{padding:32px 32px 36px;}
+  .teacher-body .role{font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--clay-deep); letter-spacing:0.08em; text-transform:uppercase;}
+  .teacher-body h3{font-size:26px; margin-top:10px;}
+  .teacher-body .thai{font-size:14px; color:rgba(42,40,32,0.55); margin-top:2px;}
+  .teacher-body p{font-size:15px; line-height:1.7; color:rgba(42,40,32,0.8); margin-top:16px;}
+  .tag-row{display:flex; flex-wrap:wrap; gap:8px; margin-top:20px;}
+  .tag{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.03em;
+    border:1px solid var(--line); border-radius:999px; padding:5px 12px; color:var(--sage-deep);
+  }
+
+  /* ---------- CURRICULUM ---------- */
+  .curriculum{background:var(--cream-deep);}
+  .visa-strip{
+    display:flex; align-items:center; justify-content:space-between; gap:40px;
+    background:var(--sage-deep); color:#fff; padding:30px 40px; border-radius:4px; margin-bottom:64px;
+    flex-wrap:wrap;
+  }
+  .visa-strip .left h3{color:#fff; font-size:22px;}
+  .visa-strip .left p{font-size:14px; color:rgba(243,238,226,0.75); margin-top:8px; max-width:460px; line-height:1.55;}
+  .visa-strip .right{display:flex; align-items:center; gap:26px;}
+  .visa-badge{
+    font-family:'IBM Plex Mono',monospace; text-align:center; border:1px solid rgba(243,238,226,0.4);
+    padding:12px 20px; border-radius:2px;
+  }
+  .visa-badge b{display:block; font-family:'Fraunces',serif; font-size:24px; color:var(--clay); font-weight:500;}
+  .visa-badge span{font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase; color:rgba(243,238,226,0.7);}
+
+  .month-list{display:grid; grid-template-columns:repeat(4, 1fr); gap:1px; background:var(--line); border:1px solid var(--line);}
+  .month{background:var(--cream-deep); padding:22px 20px; min-height:132px;}
+  .month .n{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--clay-deep);}
+  .month .t{font-family:'Fraunces',serif; font-size:18px; margin-top:8px; line-height:1.25; color:var(--sage-deep);}
+
+  .pricing-row{
+    display:grid; grid-template-columns:1.3fr 1fr; gap:48px; margin-top:64px; align-items:start;
+  }
+  .price-card{background:var(--sage-deep); color:#fff; padding:36px; border-radius:4px;}
+  .price-card .amount{font-family:'Fraunces',serif; font-size:44px; color:var(--clay); font-weight:500;}
+  .price-card .amount span{font-size:16px; color:rgba(243,238,226,0.7); font-family:'Work Sans';}
+  .price-card ul{list-style:none; padding:0; margin:22px 0 0; font-size:14px; line-height:2;color:rgba(243,238,226,0.85);}
+  .price-card ul li::before{content:"— "; color:var(--clay);}
+  .includes h4{font-size:17px; margin-bottom:14px; font-family:'Fraunces',serif; color:var(--sage-deep);}
+  .includes .item{display:flex; gap:14px; padding:14px 0; border-top:1px solid var(--line);}
+  .includes .item:first-child{border-top:none;}
+  .includes .item .ic{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--clay-deep); min-width:28px;}
+  .includes .item .desc{font-size:14px; line-height:1.6; color:rgba(42,40,32,0.78);}
+  .includes .item b{color:var(--ink);}
+
+  /* ---------- GALLERY ---------- */
+  .gallery-grid{
+    display:grid; grid-template-columns:repeat(6, 1fr); grid-auto-rows:150px; gap:12px;
+  }
+  .g1{grid-column:span 4; grid-row:span 2;}
+  .g2{grid-column:span 2; grid-row:span 2;}
+  .g3{grid-column:span 2; grid-row:span 2;}
+  .g4{grid-column:span 2; grid-row:span 2;}
+  .g5{grid-column:span 2; grid-row:span 2;}
+  .gallery-grid figure{margin:0; overflow:hidden; border-radius:3px; position:relative;}
+  .gallery-grid img{transition:transform .5s ease;}
+  .gallery-grid figure:hover img{transform:scale(1.05);}
+
+  /* ---------- VISIT ---------- */
+  .visit{background:var(--sage-deep); color:var(--cream);}
+  .visit .eyebrow{color:var(--cream-deep);}
+  .visit .section-head h2{color:#fff;}
+  .visit .section-head p{color:rgba(243,238,226,0.75);}
+  .visit-grid{display:grid; grid-template-columns:0.9fr 1.1fr; gap:56px; align-items:center;}
+  .visit-photo{border-radius:4px; overflow:hidden; box-shadow:0 30px 60px rgba(0,0,0,0.3);}
+  .visit-photo img{aspect-ratio:3/4.24;}
+  .contact-list{display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-top:32px;}
+  .contact-item .k{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--clay);}
+  .contact-item .v{font-size:15.5px; margin-top:8px; line-height:1.6; color:#fff;}
+  .contact-item a{text-decoration:none; border-bottom:1px solid rgba(243,238,226,0.4);}
+
+  .whatsapp-card{
+    display:flex; align-items:center; gap:26px;
+    background:rgba(243,238,226,0.06); border:1px solid rgba(243,238,226,0.2);
+    border-radius:6px; padding:22px; margin-top:36px;
+  }
+  .wa-qr{width:104px; height:104px; flex:none; border-radius:4px; overflow:hidden; background:#F3EEE2; padding:6px;}
+  .wa-qr img{border-radius:2px;}
+  .wa-info .wa-eyebrow{font-size:13px; color:rgba(243,238,226,0.7);}
+  .wa-info .wa-name{font-family:'Fraunces',serif; font-size:20px; color:#fff; margin-top:4px;}
+  .wa-info p{font-size:13.5px; line-height:1.6; color:rgba(243,238,226,0.72); margin:10px 0 14px; max-width:380px;}
+  .wa-btn{padding:10px 20px; font-size:12px;}
+  @media (max-width:600px){ .whatsapp-card{flex-direction:column; align-items:flex-start;} }
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--ink); color:rgba(243,238,226,0.6); padding:48px 0 32px;}
+  .footer-row{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;}
+  .footer-mark{font-family:'Fraunces',serif; color:#fff; font-size:18px;}
+  footer .small{font-size:12.5px;}
+  footer a{text-decoration:none; opacity:0.75;}
+
+  @media (max-width: 860px){
+    .nav-links{display:none;}
+    .legacy-grid, .visit-grid, .teachers-grid{grid-template-columns:1fr;}
+    .pricing-row{grid-template-columns:1fr;}
+    .month-list{grid-template-columns:repeat(2,1fr);}
+    .gallery-grid{grid-template-columns:repeat(2,1fr); grid-auto-rows:160px;}
+    .g1,.g2,.g3,.g4,.g5{grid-column:span 2; grid-row:span 2;}
+    .visa-strip{flex-direction:column; align-items:flex-start;}
+    .hero-row{gap:18px;}
+    section{padding:70px 0;}
+    .wrap{padding:0 20px;}
+    .nav{padding:16px 20px;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="nav-mark">
+    <svg class="bulb" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2v2M4 12H2M22 12h-2M5.6 5.6L4.2 4.2M18.4 5.6l1.4-1.4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+      <path d="M9 21h6M10 18h4M8 14a4 4 0 118 0c0 2-1.5 2.6-2 4H10c-.5-1.4-2-2-2-4z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
+    </svg>
+    Ferment Space
+  </div>
+  <div class="nav-links">
+    <a href="#legacy">Our Story</a>
+    <a href="#teachers">Teachers</a>
+    <a href="#curriculum">Curriculum</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#visit">Visit</a>
+  </div>
+  <a class="nav-cta" href="https://forms.gle/Kv8QVsbMyKsbq6A69" target="_blank" rel="noopener">Enroll now</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-media"><img src="assets/hero.jpg" alt="Cooking class at Ferment Space"></div>
+  <div class="hero-content wrap">
+    <div class="hero-badge"><span class="dot"></span> DTV Destination Thailand Visa · 5-Year Eligible</div>
+    <h1>Cook your way<br><em>to Thailand.</em></h1>
+    <p class="hero-sub">A 12-month Lanna cooking apprenticeship in the hills of Hang Dong, Chiang Mai — taught by a mother-daughter kitchen three generations deep in Northern Thai tradition.</p>
+    <div class="hero-row">
+      <a class="btn-primary" href="https://forms.gle/Kv8QVsbMyKsbq6A69" target="_blank" rel="noopener">Reserve your seat</a>
+    </div>
+  </div>
+  <div class="hero-scroll">SCROLL</div>
+</section>
+
+<section class="legacy" id="legacy">
+  <div class="wrap">
+    <div class="legacy-grid">
+      <div class="legacy-photo">
+        <div class="frame"><img src="assets/vintage-family.jpg" alt="Ratana's grandmother, Chiang Mai, 1955"></div>
+        <div class="cap">Ratana's grandmother, Thapae Road, Chiang Mai — the kitchen this school still cooks from.</div>
+      </div>
+      <div class="legacy-text">
+        <div class="eyebrow">Our Story</div>
+        <p>Food and medicine were never two different things here — they were the same lesson, taught at the same stove.</p>
+        <p>Ferment Space grew out of a family kitchen that has fed Chiang Mai since long before it had a name. Ratana Jaikusol learned to pound curry paste at her grandmother's side in the Lanna villages of the North. She opened Ratana's Kitchen in 1997 and spent 27 years cooking Northern and Central Thai food for more than 100,000 guests. Her daughter, Tai, grew up inside that kitchen — prepping herbs before school, cooking the line beside her mother through its busiest years.</p>
+        <p>Today Ratana and Tai teach together at Ferment Space, in a fermentation studio and wellness garden overlooking a canal outside the city. Students don't just learn recipes here. They join a living family lineage, refined over almost three decades, and carried forward one class at a time.</p>
+        <div class="lineage">
+          <div class="lineage-step">
+            <div class="num">01</div>
+            <div class="who">Great-grandmother</div>
+            <div class="what">Village cooking &amp; fermentation, Lanna Kingdom</div>
+          </div>
+          <div class="lineage-step">
+            <div class="num">02</div>
+            <div class="who">Ratana</div>
+            <div class="what">Ratana's Kitchen, Chiang Mai — 1997–2024</div>
+          </div>
+          <div class="lineage-step">
+            <div class="num">03</div>
+            <div class="who">Tai</div>
+            <div class="what">Founder, Ferment Space — 2024–present</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="teachers">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Your Teachers</div>
+      <h2>A mother and daughter,<br>one unbroken kitchen.</h2>
+      <p>Exactly as Lanna cooking has always been passed on — not from a curriculum, but from one person to the next.</p>
+    </div>
+    <div class="teachers-grid">
+      <div class="teacher-card">
+        <div class="teacher-photo"><img src="assets/ratana-portrait.jpg" alt="Ratana Jaikusol"></div>
+        <div class="teacher-body">
+          <div class="role">Head Instructor</div>
+          <h3>Ratana Jaikusol</h3>
+          <div class="thai">รัตนา ใจกุศล</div>
+          <p>Born in 1955 on Thapae Road, Chiang Mai, into a Tai Yuan family of the Lanna Kingdom. Ratana learned to cook at her grandmother's side — pounding curry pastes by hand and fermenting soybeans and greens with the herbs of the North. She founded and ran Ratana's Kitchen for 27 years before retiring in 2024 to teach full-time.</p>
+          <div class="tag-row">
+            <span class="tag">27 yrs · Ratana's Kitchen</span>
+            <span class="tag">Lanna &amp; Central Thai</span>
+            <span class="tag">Traditional fermentation</span>
+          </div>
+        </div>
+      </div>
+      <div class="teacher-card">
+        <div class="teacher-photo"><img src="assets/tai-ratana-restaurant.jpg" alt="Tai and Ratana Jaikusol"></div>
+        <div class="teacher-body">
+          <div class="role">Director &amp; Instructor</div>
+          <h3>Kanjawan "Tai" Jaikusol</h3>
+          <div class="thai">กาญจวรรณ ใจกุศล</div>
+          <p>Tai grew up inside her mother's kitchen and owned her own restaurant by age 18. She holds a HarvardX certificate in food fermentation and is a first-year student of Thai Traditional Medicine — where, as in Lanna tradition, food and medicine are treated as one practice.</p>
+          <div class="tag-row">
+            <span class="tag">HarvardX · Food Fermentation</span>
+            <span class="tag">Thai Traditional Medicine</span>
+            <span class="tag">Wellness &amp; gut health</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="curriculum" id="curriculum">
+  <div class="wrap">
+    <div class="visa-strip">
+      <div class="left">
+        <div class="eyebrow" style="color:rgba(243,238,226,0.7)">DTV Visa Program</div>
+        <h3>Enroll and become eligible for Thailand's 5-year Destination Thailand Visa.</h3>
+        <p>A multiple-entry visa for people who want to live, learn and experience Thailand long term — supported with full school documentation for your application, or handled start-to-finish by our visa agency partner.</p>
+      </div>
+      <div class="right">
+        <div class="visa-badge"><b>12</b><span>Months</span></div>
+        <div class="visa-badge"><b>3</b><span>Thai Seasons</span></div>
+        <div class="visa-badge"><b>5-Yr</b><span>DTV Visa</span></div>
+      </div>
+    </div>
+
+    <div class="section-head">
+      <div class="eyebrow">The Curriculum</div>
+      <h2>Twelve months, three seasons,<br>one full Thai kitchen.</h2>
+      <p>Each class builds on the last — fermentation and curry pastes early on, moving through the noodle stalls and street-food repertoire, and finishing in royal and modern Thai technique.</p>
+    </div>
+
+    <div class="month-list">
+      <div class="month"><div class="n">MONTH 01</div><div class="t">Fermentation</div></div>
+      <div class="month"><div class="n">MONTH 02</div><div class="t">Basic Lanna History</div></div>
+      <div class="month"><div class="n">MONTH 03</div><div class="t">Curry Pastes</div></div>
+      <div class="month"><div class="n">MONTH 04</div><div class="t">Soups &amp; Broths</div></div>
+      <div class="month"><div class="n">MONTH 05</div><div class="t">Stir-Fry Mastery</div></div>
+      <div class="month"><div class="n">MONTH 06</div><div class="t">Salads &amp; Larb</div></div>
+      <div class="month"><div class="n">MONTH 07</div><div class="t">Street Food Favorites</div></div>
+      <div class="month"><div class="n">MONTH 08</div><div class="t">Noodles &amp; Rice Dishes</div></div>
+      <div class="month"><div class="n">MONTH 09</div><div class="t">Thai Desserts &amp; Sweets</div></div>
+      <div class="month"><div class="n">MONTH 10</div><div class="t">Royal Thai Cuisine</div></div>
+      <div class="month"><div class="n">MONTH 11</div><div class="t">Fusion &amp; Modern Thai</div></div>
+      <div class="month"><div class="n">MONTH 12</div><div class="t">Seasonal Feast &amp; Graduation</div></div>
+    </div>
+
+    <div class="pricing-row" id="enroll">
+      <div class="price-card">
+        <div class="eyebrow" style="color:rgba(243,238,226,0.7)">Tuition</div>
+        <div class="amount">฿60,000 <span>/ 12-month program</span></div>
+        <ul>
+          <li>12 immersive cooking classes, 7 hours each</li>
+          <li>Full DTV visa support documentation</li>
+          <li>12 free day-passes for ice bath &amp; sauna</li>
+          <li>Taught by Ratana &amp; Tai, in English</li>
+        </ul>
+      </div>
+      <div class="includes">
+        <h4>What's included</h4>
+        <div class="item"><div class="ic">A</div><div class="desc"><b>Learn from village elders.</b> Our teachers are local experts who've cooked and taught for generations.</div></div>
+        <div class="item"><div class="ic">B</div><div class="desc"><b>Wellness, built in.</b> Twelve one-day passes for cold-plunge and sauna access alongside your cooking day.</div></div>
+        <div class="item"><div class="ic">C</div><div class="desc"><b>Visa-ready.</b> If you apply for your DTV visa yourself, we provide every school document you'll need — or our agency partner can handle it start to finish.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Inside The Studio</div>
+      <h2>A working fermentation kitchen,<br>not a stage set.</h2>
+    </div>
+    <div class="gallery-grid">
+      <figure class="g1"><img src="assets/team-group.jpg" alt="Cooking class group"></figure>
+      <figure class="g2"><img src="assets/space-overview.jpg" alt="Fermentation shelves and stove"></figure>
+      <figure class="g3"><img src="assets/tools-topdown.jpg" alt="Wok and mortar tools"></figure>
+      <figure class="g4"><img src="assets/action-wide.jpg" alt="Students cooking together"></figure>
+      <figure class="g5"><img src="assets/space-bright.jpg" alt="Ferment Space pavilion"></figure>
+    </div>
+  </div>
+</section>
+
+<section class="visit" id="visit">
+  <div class="wrap">
+    <div class="visit-grid">
+      <div class="visit-photo"><img src="assets/gate.jpg" alt="Ferment Space entrance gate"></div>
+      <div>
+        <div class="eyebrow">Find Us</div>
+        <h2 style="margin-top:14px; font-size:clamp(28px,3.6vw,42px);">Nam Phrae, Hang Dong —<br>just outside Chiang Mai.</h2>
+        <p style="font-size:16px; line-height:1.7; color:rgba(243,238,226,0.78); margin-top:18px; max-width:480px;">The studio sits above a canal on the quiet edge of Hang Dong, ten minutes from the ring road — jars fermenting on open shelves, a wood-fired pavilion, and the Northern hills just past the treeline.</p>
+        <div class="contact-list">
+          <div class="contact-item">
+            <div class="k">Address</div>
+            <div class="v">7 Moo 9, Nam Phrae<br>Hang Dong, Chiang Mai 50230</div>
+          </div>
+          <div class="contact-item">
+            <div class="k">Phone</div>
+            <div class="v"><a href="tel:+66932720050">+66 93 272 0050</a></div>
+          </div>
+          <div class="contact-item">
+            <div class="k">Email</div>
+            <div class="v"><a href="mailto:fermentspaceinfo@gmail.com">fermentspaceinfo@gmail.com</a></div>
+          </div>
+          <div class="contact-item">
+            <div class="k">License</div>
+            <div class="v">Tourism Business No. 23/04028</div>
+          </div>
+        </div>
+
+        <div class="whatsapp-card">
+          <div class="wa-qr">
+            <a href="https://chat.whatsapp.com/EuBAKSG5SSuKim0lvFAaxJ?s=cl&amp;p=i&amp;mlu=0&amp;ilr=0&amp;amv=2" target="_blank" rel="noopener">
+              <img src="assets/whatsapp-qr.jpg" alt="WhatsApp QR code for DTV Visa Community group">
+            </a>
+          </div>
+          <div class="wa-info">
+            <div class="wa-eyebrow">🇹🇭 DTV Visa Community</div>
+            <div class="wa-name">WhatsApp Group</div>
+            <p>Scan the QR code, or tap below to join students and graduates chatting about the cooking school and the DTV visa process.</p>
+            <a class="btn-primary wa-btn" href="https://chat.whatsapp.com/EuBAKSG5SSuKim0lvFAaxJ?s=cl&amp;p=i&amp;mlu=0&amp;ilr=0&amp;amv=2" target="_blank" rel="noopener">Join on WhatsApp</a>
+          </div>
+        </div>
+
+        <a class="btn-primary" style="display:inline-block; margin-top:32px;" href="https://maps.app.goo.gl/7cCEKoYTxhZJbzgB7?g_st=ic" target="_blank" rel="noopener">Get directions</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-row">
+    <div class="footer-mark">Ferment Space Cooking School</div>
+    <div class="small">SME CNX Co., Ltd. · Chiang Mai, Thailand</div>
+    <div class="small"><a href="mailto:fermentspaceinfo@gmail.com">fermentspaceinfo@gmail.com</a></div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  });
+</script>
+
+</body>
+</html>
