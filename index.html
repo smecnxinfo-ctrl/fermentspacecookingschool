@@ -271,10 +271,24 @@
   .visa-badge b{display:block; font-family:'Fraunces',serif; font-size:24px; color:var(--clay); font-weight:500;}
   .visa-badge span{font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase; color:rgba(243,238,226,0.7);}
 
-  .month-list{display:grid; grid-template-columns:repeat(4, 1fr); gap:1px; background:var(--line); border:1px solid var(--line);}
-  .month{background:var(--cream-deep); padding:22px 20px; min-height:132px;}
-  .month .n{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--clay-deep);}
-  .month .t{font-family:'Fraunces',serif; font-size:18px; margin-top:8px; line-height:1.25; color:var(--sage-deep);}
+  .month-list{display:grid; grid-template-columns:repeat(4, 1fr); gap:16px;}
+  .month{
+    background:#fff; border:1px solid var(--line); border-radius:8px;
+    padding:26px 22px; min-height:132px; transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .month:hover{transform:translateY(-3px); box-shadow:0 14px 30px rgba(42,40,32,0.08);}
+  .month .ico{font-size:26px; line-height:1;}
+  .month .n{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--clay-deep); margin-top:14px; letter-spacing:0.06em;}
+  .month .t{font-family:'Fraunces',serif; font-size:18px; margin-top:6px; line-height:1.25; color:var(--sage-deep);}
+
+  .traditions{display:grid; grid-template-columns:1fr 1fr; gap:24px; margin:56px 0 64px;}
+  .tradition-card{
+    background:#fff; border-left:3px solid var(--sage); border-radius:2px;
+    padding:26px 30px; box-shadow:0 10px 26px rgba(42,40,32,0.05);
+  }
+  .tradition-card.clay{border-left-color:var(--clay);}
+  .tradition-card h4{font-size:19px; font-family:'Fraunces',serif; color:var(--sage-deep); display:flex; align-items:center; gap:10px;}
+  .tradition-card p{font-size:14.5px; line-height:1.65; color:rgba(42,40,32,0.75); margin-top:10px;}
 
   .pricing-row{
     display:grid; grid-template-columns:1.3fr 1fr; gap:48px; margin-top:64px; align-items:start;
@@ -337,12 +351,34 @@
   footer .small{font-size:12.5px;}
   footer a{text-decoration:none; opacity:0.75;}
 
+  /* ---------- FAQ ---------- */
+  .faq-list{border-top:1px solid var(--line);}
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-item summary{
+    display:flex; align-items:center; justify-content:space-between; gap:20px;
+    padding:26px 4px; cursor:pointer; list-style:none;
+    font-family:'Fraunces',serif; font-size:19px; color:var(--sage-deep);
+  }
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary .plus{
+    font-family:'IBM Plex Mono',monospace; font-size:20px; color:var(--clay-deep);
+    transition:transform .25s ease; flex:none;
+  }
+  .faq-item[open] summary .plus{transform:rotate(45deg);}
+  .faq-item .faq-body{padding:0 4px 28px; max-width:760px;}
+  .faq-body p{font-size:15px; line-height:1.75; color:rgba(42,40,32,0.78); margin:0 0 14px;}
+  .faq-body ul{margin:0 0 14px; padding-left:20px;}
+  .faq-body li{font-size:15px; line-height:1.7; color:rgba(42,40,32,0.78); margin-bottom:8px;}
+  .faq-body a{color:var(--clay-deep); border-bottom:1px solid rgba(168,98,63,0.4);}
+
   @media (max-width: 860px){
     .nav-links{display:none;}
     .nav-mark{font-size:14px;}
     .legacy-grid, .visit-grid, .teachers-grid{grid-template-columns:1fr;}
     .pricing-row{grid-template-columns:1fr;}
     .month-list{grid-template-columns:repeat(2,1fr);}
+    .traditions{grid-template-columns:1fr;}
+    .faq-item summary{font-size:16.5px;}
     .gallery-grid{grid-template-columns:repeat(2,1fr); grid-auto-rows:160px;}
     .g1,.g2,.g3,.g4,.g5{grid-column:span 2; grid-row:span 2;}
     .visa-strip{flex-direction:column; align-items:flex-start;}
@@ -365,6 +401,7 @@
     <a href="#teachers">Teachers</a>
     <a href="#curriculum">Curriculum</a>
     <a href="#gallery">Gallery</a>
+    <a href="#faq">FAQ</a>
     <a href="#visit">Visit</a>
   </div>
   <a class="nav-cta" href="https://forms.gle/Kv8QVsbMyKsbq6A69" target="_blank" rel="noopener">Enroll now</a>
@@ -479,18 +516,29 @@
     </div>
 
     <div class="month-list">
-      <div class="month"><div class="n">MONTH 01</div><div class="t">Fermentation</div></div>
-      <div class="month"><div class="n">MONTH 02</div><div class="t">Basic Lanna History</div></div>
-      <div class="month"><div class="n">MONTH 03</div><div class="t">Curry Pastes</div></div>
-      <div class="month"><div class="n">MONTH 04</div><div class="t">Soups &amp; Broths</div></div>
-      <div class="month"><div class="n">MONTH 05</div><div class="t">Stir-Fry Mastery</div></div>
-      <div class="month"><div class="n">MONTH 06</div><div class="t">Salads &amp; Larb</div></div>
-      <div class="month"><div class="n">MONTH 07</div><div class="t">Street Food Favorites</div></div>
-      <div class="month"><div class="n">MONTH 08</div><div class="t">Noodles &amp; Rice Dishes</div></div>
-      <div class="month"><div class="n">MONTH 09</div><div class="t">Thai Desserts &amp; Sweets</div></div>
-      <div class="month"><div class="n">MONTH 10</div><div class="t">Royal Thai Cuisine</div></div>
-      <div class="month"><div class="n">MONTH 11</div><div class="t">Fusion &amp; Modern Thai</div></div>
-      <div class="month"><div class="n">MONTH 12</div><div class="t">Seasonal Feast &amp; Graduation</div></div>
+      <div class="month"><div class="ico">🫙</div><div class="n">MONTH 01</div><div class="t">Fermentation</div></div>
+      <div class="month"><div class="ico">🏛️</div><div class="n">MONTH 02</div><div class="t">Basic Lanna History</div></div>
+      <div class="month"><div class="ico">🌶️</div><div class="n">MONTH 03</div><div class="t">Curry Pastes</div></div>
+      <div class="month"><div class="ico">🍲</div><div class="n">MONTH 04</div><div class="t">Soups &amp; Broths</div></div>
+      <div class="month"><div class="ico">🔥</div><div class="n">MONTH 05</div><div class="t">Stir-Fry Mastery</div></div>
+      <div class="month"><div class="ico">🥗</div><div class="n">MONTH 06</div><div class="t">Salads &amp; Larb</div></div>
+      <div class="month"><div class="ico">🍢</div><div class="n">MONTH 07</div><div class="t">Street Food Favorites</div></div>
+      <div class="month"><div class="ico">🍜</div><div class="n">MONTH 08</div><div class="t">Noodles &amp; Rice Dishes</div></div>
+      <div class="month"><div class="ico">🍮</div><div class="n">MONTH 09</div><div class="t">Thai Desserts &amp; Sweets</div></div>
+      <div class="month"><div class="ico">👑</div><div class="n">MONTH 10</div><div class="t">Royal Thai Cuisine</div></div>
+      <div class="month"><div class="ico">✨</div><div class="n">MONTH 11</div><div class="t">Fusion &amp; Modern Thai</div></div>
+      <div class="month"><div class="ico">🎓</div><div class="n">MONTH 12</div><div class="t">Seasonal Feast &amp; Graduation</div></div>
+    </div>
+
+    <div class="traditions">
+      <div class="tradition-card">
+        <h4>🌿 Lanna Northern Thai Cuisine</h4>
+        <p>Traditional Chiang Mai flavors, herbal dishes, local techniques, and mountain-culture recipes passed down through generations.</p>
+      </div>
+      <div class="tradition-card clay">
+        <h4>🍜 Central Thai Cuisine</h4>
+        <p>Classic Thai dishes from Bangkok and central regions — balance, spice, and royal-inspired cooking techniques.</p>
+      </div>
     </div>
 
     <div class="pricing-row" id="enroll">
@@ -526,6 +574,96 @@
       <figure class="g3"><img src="tools-topdown.jpg" alt="Wok and mortar tools"></figure>
       <figure class="g4"><img src="action-wide.jpg" alt="Students cooking together"></figure>
       <figure class="g5"><img src="space-bright.jpg" alt="Ferment Space pavilion"></figure>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Questions</div>
+      <h2>Frequently <em style="font-style:italic; color:var(--sage);">Asked</em></h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item" open>
+        <summary>What exactly is the DTV (Destination Thailand Visa)?<span class="plus">+</span></summary>
+        <div class="faq-body">
+          <p>The <b>Destination Thailand Visa (DTV)</b> is a landmark long-stay visa launched by Thailand in July 2024. It gives you a <b>5-year multiple-entry visa</b> with stays of up to <b>180 days per entry</b> — renewable for another 180 days without leaving the country. It was designed for digital nomads, remote workers, retirees, freelancers, and people who want to deeply experience Thai culture. Unlike a tourist visa, the DTV lets you truly <em>live</em> in Thailand — build community, work remotely, and return freely for 5 years.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>How does enrolling at Ferment Space qualify me for the DTV?<span class="plus">+</span></summary>
+        <div class="faq-body">
+          <p>The Thai government created a <b>"Soft Power" cultural education</b> pathway within the DTV. Enrolling in an approved Thai culinary and cultural school satisfies this requirement. Ferment Space provides you with an <b>official enrollment letter and embassy-aligned documentation</b> — the exact paperwork needed for your DTV application. Our 12-month program covers Thai culinary arts, fermentation, Lanna cultural history, and seasonal cooking traditions.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>Why learn culture and cooking — why not just a short class?<span class="plus">+</span></summary>
+        <div class="faq-body">
+          <p>Because Ferment Space isn't just a cooking school — it's a <b>gateway into the Lanna way of life</b>. In Northern Thailand, food is inseparable from culture. When you learn to make a proper Khao Soi, you're also learning about 700 years of Lanna kingdom history and the trade routes that shaped this cuisine. Our program gives you:</p>
+          <ul>
+            <li><b>Cooking as a living practice</b> — techniques passed down from village elders and local grandmothers, not recipes from a tourist menu.</li>
+            <li><b>Fermentation &amp; preservation</b> — a cornerstone of Lanna cuisine: fermented pastes, pickled vegetables, and rice wines made in Northern Thai villages for centuries.</li>
+            <li><b>Seasonal &amp; local eating</b> — how to shop at local markets, identify indigenous herbs, and cook with what's in season the way Thai families always have.</li>
+            <li><b>Community &amp; slow living</b> — Lanna culture is about <em>sanuk</em> (joy), <em>sabai</em> (ease), and deep connection.</li>
+          </ul>
+          <p>A tourist cooking class teaches you a recipe. Our program teaches you a <em>way of being</em>.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>What is Lanna culture and why does it matter?<span class="plus">+</span></summary>
+        <div class="faq-body">
+          <p><b>Lanna</b> (ล้านนา — "a million rice fields") was an independent kingdom centered in Chiang Mai that flourished from the 13th to 18th century, with its own language, script, architecture, and food traditions entirely distinct from Central Thailand. Living here, you are surrounded by this heritage — in the temples, the markets, the way people greet each other, and above all in the food.</p>
+          <p>Lanna cuisine uses ingredients rarely found elsewhere: <em>pak waan</em> (sweet leaf), <em>ma dua</em> (bitter eggplant), <em>phak chi lao</em> (dill) — forest ingredients from a mountain culture. Learning this food turns you from a visitor into a <em>neighbour</em>.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>What makes Ferment Space different from other cooking schools?<span class="plus">+</span></summary>
+        <div class="faq-body">
+          <p>Most Chiang Mai cooking schools are designed for tourists passing through for one afternoon. Ferment Space is built for people who <b>want to stay</b>:</p>
+          <ul>
+            <li>🌿 <b>Wellness built in</b> — sauna and cold-plunge access alongside your cooking day, not just a classroom.</li>
+            <li>👵 <b>Real community</b> — a social club where you meet long-term expats, digital nomads, local creatives, and fellow DTV students.</li>
+            <li>🍽️ <b>Authentic local teachers</b> — not hospitality-trained chefs performing for tourists, but real village elders who cook this way every day.</li>
+          </ul>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>What will I learn across the 12 months?<span class="plus">+</span></summary>
+        <div class="faq-body">
+          <p>Each month builds your knowledge progressively through a different pillar of Thai culinary tradition:</p>
+          <p><b>Month 1 — Fermentation:</b> The foundation of Lanna cuisine. Fermented fish sauce, pickled mustard greens, soybean paste.<br>
+          <b>Month 2 — Lanna History &amp; Food Culture:</b> Kingdoms, trade routes, and the cultural influences that shaped Northern Thai cooking.<br>
+          <b>Month 3 — Curry Pastes:</b> Hand-pounding aromatics, understanding Lanna vs. Central Thai curry bases.<br>
+          <b>Month 4 — Soups &amp; Broths:</b> Tom Kha, Tom Yum, Khao Soi — slow-cooked depth of flavor.<br>
+          <b>Month 5 — Stir-Fry Mastery:</b> Wok technique, heat control, the "breath of the wok."<br>
+          <b>Month 6 — Salads &amp; Larb:</b> The Lanna art of balance: sour, salty, spicy, fresh.<br>
+          <b>Month 7 — Street Food Favorites:</b> Pad Thai, Mango Sticky Rice, Sai Ua sausage, Khanom Jeen.<br>
+          <b>Month 8 — Noodles &amp; Rice:</b> From rice paddy to table; Thailand's many noodle traditions.<br>
+          <b>Month 9 — Thai Desserts &amp; Sweets:</b> Coconut sweets, sticky rice desserts, ceremonial flower-shaped treats.<br>
+          <b>Month 10 — Royal Thai Cuisine:</b> The refined, elaborate dishes of the Thai royal court tradition.<br>
+          <b>Month 11 — Fusion &amp; Modern Thai:</b> How young Thai chefs are reinventing tradition for the modern world.<br>
+          <b>Month 12 — Seasonal Feast &amp; Graduation:</b> A full community celebration feast and ceremony.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>What wellness is included with the program?<span class="plus">+</span></summary>
+        <div class="faq-body">
+          <p>Every enrolled student receives <b>12 free sauna &amp; ice bath day passes</b>. Facilities include a wood-fired Finnish sauna for deep recovery, a cold-plunge ice bath for cold therapy and mental resilience, and quiet garden space to relax between classes.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>Where are you located and how do I get there?<span class="plus">+</span></summary>
+        <div class="faq-body">
+          <p>We are at <b>7 Moo 9, Nam Phrae, Hang Dong, Chiang Mai 50230</b> — a quiet property about 20 minutes south of the Old City in the Hang Dong district. Hang Dong is where many long-term expats and local Thais choose to live — quieter, more authentic, away from tourist crowds, and close to excellent local markets. A Grab from the Old City takes about 20 minutes and costs around 80–120 baht. <a href="https://maps.app.goo.gl/7cCEKoYTxhZJbzgB7?g_st=ic" target="_blank" rel="noopener">Open in Google Maps ↗</a></p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>How do I enroll or ask questions?<span class="plus">+</span></summary>
+        <div class="faq-body">
+          <p>The fastest way: <b>WhatsApp us at <a href="tel:+66932720050">093-272-0050</a></b> and we'll personally walk you through the program, visa paperwork, and any questions. You can also <a href="https://chat.whatsapp.com/EuBAKSG5SSuKim0lvFAaxJ?s=cl&amp;p=i&amp;mlu=0&amp;ilr=0&amp;amv=2" target="_blank" rel="noopener">join our free DTV Community WhatsApp Group</a> to connect with current students, get real answers from people already living the program, and stay updated on class dates. Email us at <a href="mailto:fermentspaceinfo@gmail.com">fermentspaceinfo@gmail.com</a> anytime.</p>
+        </div>
+      </details>
     </div>
   </div>
 </section>
@@ -582,6 +720,7 @@
     <div class="footer-mark">Ferment Space Cooking School</div>
     <div class="small">SME CNX Co., Ltd. · Chiang Mai, Thailand</div>
     <div class="small"><a href="mailto:fermentspaceinfo@gmail.com">fermentspaceinfo@gmail.com</a></div>
+    <div class="small">Also visit <a href="https://www.fermentspace.com" target="_blank" rel="noopener">fermentspace.com</a> — our wellness &amp; co-living space</div>
   </div>
 </footer>
 
