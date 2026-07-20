@@ -202,18 +202,23 @@
   }
   .nav-mark{
     display:flex; align-items:center; gap:10px;
-    font-family:'Fraunces', serif; font-weight:500; font-size:17px; color:var(--sage-deep);
-    white-space:nowrap;
+    font-family:'Fraunces', serif; font-weight:500; font-size:17px; color:#fff;
+    white-space:nowrap; text-shadow:0 1px 8px rgba(0,0,0,0.35);
+    transition:color .3s ease, text-shadow .3s ease;
   }
+  .nav.scrolled .nav-mark{color:var(--sage-deep); text-shadow:none;}
   .nav-mark .bulb{width:26px; height:26px;}
-  .nav-links{display:flex; gap:34px; font-size:14px; letter-spacing:0.02em;}
-  .nav-links a{text-decoration:none; opacity:0.82; transition:opacity .2s;}
+  .nav-links{display:flex; gap:34px; font-size:14px; letter-spacing:0.02em; color:#fff; text-shadow:0 1px 8px rgba(0,0,0,0.35); transition:color .3s ease, text-shadow .3s ease;}
+  .nav.scrolled .nav-links{color:var(--ink); text-shadow:none;}
+  .nav-links a{text-decoration:none; opacity:0.9; transition:opacity .2s;}
   .nav-links a:hover{opacity:1;}
   .nav-cta{
     font-size:13px; font-family:'IBM Plex Mono', monospace; letter-spacing:0.06em;
-    border:1px solid var(--sage-deep); padding:9px 18px; border-radius:2px;
+    border:1px solid #fff; color:#fff; padding:9px 18px; border-radius:2px;
     text-decoration:none; text-transform:uppercase;
+    transition:color .3s ease, border-color .3s ease;
   }
+  .nav.scrolled .nav-cta{border-color:var(--sage-deep); color:var(--sage-deep);}
   .burger{display:none;}
 
   /* ---------- HERO ---------- */
