@@ -285,15 +285,27 @@
   .legacy-grid{
     display:grid; grid-template-columns:0.85fr 1.15fr; gap:64px; align-items:center;
   }
-  .legacy-photo{position:relative;}
+  .legacy-photo{position:relative; padding-bottom:70px;}
   .legacy-photo .frame{
     border:10px solid var(--cream); box-shadow:0 30px 60px rgba(0,0,0,0.35);
     max-width:340px; transform:rotate(-2.5deg);
   }
   .legacy-photo .frame img{aspect-ratio:3/4;}
+  .legacy-photo .frame-2{
+    position:absolute; top:230px; right:-10px; max-width:220px; z-index:2;
+    border:8px solid var(--cream); box-shadow:0 24px 44px rgba(0,0,0,0.4);
+    transform:rotate(4deg);
+  }
+  .legacy-photo .frame-2 img{aspect-ratio:4/3;}
   .legacy-photo .cap{
     font-family:'IBM Plex Mono', monospace; font-size:11.5px; margin-top:18px;
     color:rgba(243,238,226,0.6); max-width:300px; letter-spacing:0.02em;
+  }
+  @media (max-width:860px){
+    .legacy-photo{padding-bottom:0;}
+    .legacy-photo .frame-2{
+      position:static; margin:22px 0 0 auto; max-width:220px; transform:rotate(2deg);
+    }
   }
   .legacy-text p{font-size:16.5px; line-height:1.75; color:rgba(243,238,226,0.88); margin-bottom:20px;}
   .legacy-text p:first-child{font-family:'Fraunces',serif; font-size:22px; line-height:1.5; color:#fff; font-weight:400;}
@@ -508,13 +520,14 @@
     <div class="legacy-grid">
       <div class="legacy-photo">
         <div class="frame"><img src="vintage-family.jpg" alt="Ratana's grandmother, Chiang Mai, 1955"></div>
-        <div class="cap">Ratana's grandmother, Thapae Road, Chiang Mai — the kitchen this school still cooks from.</div>
+        <div class="frame-2"><img src="mother-daughter.jpg" alt="Ratana and Tai together at Ferment Space today"></div>
+        <div class="cap">Ratana's grandmother, Thapae Road, 1955 — and Ratana with Tai at Ferment Space today.</div>
       </div>
       <div class="legacy-text">
         <div class="eyebrow">Our Story</div>
-        <p>Food and medicine were never two different things here — they were the same lesson, taught at the same stove.</p>
-        <p>Ferment Space grew out of a family kitchen that has fed Chiang Mai since long before it had a name. Ratana Jaikusol learned to pound curry paste at her grandmother's side in the Lanna villages of the North. She opened Ratana's Kitchen in 1997 and spent 27 years cooking Northern and Central Thai food for more than 100,000 guests. Her daughter, Tai, grew up inside that kitchen — prepping herbs before school, cooking the line beside her mother through its busiest years.</p>
-        <p>Today Ratana and Tai teach together at Ferment Space, in a fermentation studio and wellness garden overlooking a canal outside the city. Students don't just learn recipes here. They join a living family lineage, refined over almost three decades, and carried forward one class at a time.</p>
+        <p>Before Tai could see over the counter, she was already standing on a stool beside her mother, learning to pound curry paste the way her grandmother once taught it.</p>
+        <p>Ferment Space grew out of a family kitchen that has fed Chiang Mai since long before it had a name. Ratana Jaikusol learned to cook at her own grandmother's side in the Lanna villages of the North. She opened Ratana's Kitchen in 1997 and spent 27 years cooking Northern and Central Thai food for more than 100,000 guests — with her daughter growing up right there beside her, prepping herbs before school and cooking the line through the restaurant's busiest years.</p>
+        <p>These days it's Tai holding the ladle, and Ratana watching proudly from the next stove over — the roles have softened, but the kitchen still smells the same. Every class at Ferment Space is really just a mother and daughter, still cooking together, just with a few more people now pulling up a stool to join them.</p>
         <div class="lineage">
           <div class="lineage-step">
             <div class="num">01</div>
