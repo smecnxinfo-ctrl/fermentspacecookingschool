@@ -406,6 +406,15 @@
     .students-grid{grid-template-columns:repeat(2,1fr);}
   }
 
+  #instagram-feed-widget{min-height:120px;}
+  .instagram-placeholder{
+    border:1px dashed var(--line); border-radius:6px; padding:48px 24px;
+    text-align:center; color:rgba(42,40,32,0.45); font-family:'IBM Plex Mono',monospace; font-size:13px;
+  }
+  @media (max-width:600px){
+    #instagram-feed-widget iframe{height:380px !important;}
+  }
+
   /* ---------- VISIT ---------- */
   .visit{background:var(--sage-deep); color:var(--cream);}
   .visit .eyebrow{color:var(--cream-deep);}
@@ -496,6 +505,7 @@
     <a href="#curriculum">Curriculum</a>
     <a href="#gallery">Gallery</a>
     <a href="#students">Our Students</a>
+    <a href="#instagram">Instagram</a>
     <a href="#faq">FAQ</a>
     <a href="#visit">Visit</a>
   </div>
@@ -688,6 +698,20 @@
       <figure><img src="students-3.jpg" alt="Students in Ferment Space aprons and hats"></figure>
       <figure><img src="students-4.jpg" alt="Students prepping ingredients together at the counter"></figure>
     </div>
+  </div>
+</section>
+
+<section id="instagram">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">@fermentspacecooking</div>
+      <h2>Follow along on<br>Instagram.</h2>
+      <p>Fresh from the kitchen — new classes, seasonal ingredients, and student moments, posted as they happen.</p>
+    </div>
+    <div id="instagram-feed-widget">
+      <iframe src="https://snapwidget.com/embed/1128085" class="snapwidget-widget" allowtransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:100%; height:529px;" title="Ferment Space Cooking School. Top DTV Cooking School Chiang mai Thailand"></iframe>
+    </div>
+    <a class="btn-primary" style="display:inline-block; margin-top:28px;" href="https://www.instagram.com/fermentspacecooking" target="_blank" rel="noopener">Visit @fermentspacecooking</a>
   </div>
 </section>
 
