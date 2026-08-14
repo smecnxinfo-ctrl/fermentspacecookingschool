@@ -52,7 +52,7 @@
   "url": "https://www.fermentspacecookingschool.com/",
   "telephone": "+66932720050",
   "email": "fermentspacecookingschool@gmail.com",
-  "priceRange": "฿60,000",
+  "priceRange": "฿55,000–฿60,000",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "7 Moo 9, Nam Phrae",
@@ -68,7 +68,7 @@
   ],
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
-    "name": "12-Month Thai Cooking Program",
+    "name": "Thai Cooking & DTV Visa Programs",
     "itemListElement": [
       {
         "@type": "Offer",
@@ -82,6 +82,20 @@
           }
         },
         "price": "60000",
+        "priceCurrency": "THB"
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Course",
+          "name": "Ferment Space 9-Month Thai Cooking & DTV Visa Program",
+          "description": "A 9-month, 96-hour Lanna Thai cooking course scheduled flexibly around student availability, covering fermentation, local seasonal ingredients, curry pastes, and Thai cuisine, with full DTV visa consultation, document preparation, and submission support.",
+          "provider": {
+            "@type": "Organization",
+            "name": "Ferment Space Cooking Co., Ltd. / Ferment Space Cooking School"
+          }
+        },
+        "price": "55000",
         "priceCurrency": "THB"
       }
     ]
@@ -132,6 +146,14 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Ferment Space Cooking School is located at 7 Moo 9, Nam Phrae, Hang Dong, Chiang Mai 50230, Thailand — about 20 minutes south of Chiang Mai's Old City."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the program options and DTV visa support fee?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ferment Space offers a 12-month program (144 hours) for ฿60,000, made up of ฿50,000 for the Cooking School Program and ฿10,000 for DTV visa support, and a 9-month program (96 hours) for ฿55,000, made up of ฿45,000 for the Cooking School Program and the same ฿10,000 visa support fee. The ฿10,000 visa support fee is non-refundable once work begins, but if a visa application is unsuccessful the Cooking School Program fee is refunded in full, and Ferment Space will help reapply through another eligible consulate at no extra agency fee."
       }
     },
     {
@@ -376,6 +398,22 @@
   .price-card .amount span{font-size:16px; color:rgba(243,238,226,0.7); font-family:'Work Sans';}
   .price-card ul{list-style:none; padding:0; margin:22px 0 0; font-size:14px; line-height:2;color:rgba(243,238,226,0.85);}
   .price-card ul li::before{content:"— "; color:var(--clay);}
+  .program-grid{display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-top:36px;}
+  .fee-split{
+    margin-top:20px; padding-top:18px; border-top:1px solid rgba(243,238,226,0.25);
+    display:flex; flex-direction:column; gap:8px;
+  }
+  .fee-split div{display:flex; justify-content:space-between; font-size:13.5px; color:rgba(243,238,226,0.85);}
+  .fee-split b{color:#fff; font-weight:500;}
+  .refund-box{background:#fff; border:1px solid var(--line); border-radius:4px; padding:32px;}
+  .refund-box h4{font-size:17px; margin-bottom:14px; font-family:'Fraunces',serif; color:var(--sage-deep);}
+  .refund-box p{font-size:14px; line-height:1.7; color:rgba(42,40,32,0.78); margin-bottom:14px;}
+  .refund-box p:last-child{margin-bottom:0;}
+  .refund-box .quote{
+    font-family:'Fraunces',serif; font-style:italic; font-size:15px; line-height:1.6;
+    color:var(--sage-deep); border-left:3px solid var(--clay); padding-left:16px; margin-top:20px;
+  }
+  .refund-box .quote span{display:block; font-family:'IBM Plex Mono',monospace; font-style:normal; font-size:11px; color:rgba(42,40,32,0.5); margin-top:8px; letter-spacing:0.04em;}
   .includes h4{font-size:17px; margin-bottom:14px; font-family:'Fraunces',serif; color:var(--sage-deep);}
   .includes .item{display:flex; gap:14px; padding:14px 0; border-top:1px solid var(--line);}
   .includes .item:first-child{border-top:none;}
@@ -479,6 +517,7 @@
     .nav-mark{font-size:14px;}
     .legacy-grid, .visit-grid, .teachers-grid{grid-template-columns:1fr;}
     .pricing-row{grid-template-columns:1fr;}
+    .program-grid{grid-template-columns:1fr;}
     .month-list{grid-template-columns:repeat(2,1fr);}
     .traditions{grid-template-columns:1fr;}
     .faq-item summary{font-size:16.5px;}
@@ -609,7 +648,7 @@
       <div class="left">
         <div class="eyebrow" style="color:rgba(243,238,226,0.7)">DTV Visa Program</div>
         <h3>Enroll and become eligible for Thailand's 5-year Destination Thailand Visa.</h3>
-        <p>A multiple-entry visa for people who want to live, learn and experience Thailand long term — supported with full school documentation for your application, or handled start-to-finish by our visa agency partner.</p>
+        <p>A multiple-entry visa for people who want to live, learn and experience Thailand long term — supported with full consultation, document preparation and submission, on either our 9-month or 12-month program.</p>
       </div>
       <div class="right">
         <div class="visa-badge"><b>12</b><span>Months</span></div>
@@ -651,22 +690,57 @@
       </div>
     </div>
 
-    <div class="pricing-row" id="enroll">
+    <div class="section-head" id="enroll" style="margin-top:64px;">
+      <div class="eyebrow">Choose Your Program</div>
+      <h2>Two ways to enroll,<br>one path to the DTV.</h2>
+      <p>Both programs include full DTV visa support and are taught by Ratana &amp; Tai. Pick the length that fits your plans.</p>
+    </div>
+
+    <div class="program-grid">
       <div class="price-card">
-        <div class="eyebrow" style="color:rgba(243,238,226,0.7)">Tuition</div>
-        <div class="amount">฿60,000 <span>/ 12-month program</span></div>
+        <div class="eyebrow" style="color:rgba(243,238,226,0.7)">12-Month Program</div>
+        <div class="amount">฿60,000 <span>total</span></div>
+        <div class="fee-split">
+          <div><span>Cooking School Program</span><b>฿50,000</b></div>
+          <div><span>DTV Visa Assistance</span><b>฿10,000</b></div>
+        </div>
         <ul>
-          <li>144 hours total — 12 immersive classes, 12 hours each</li>
-          <li>Full DTV visa support documentation</li>
+          <li>144 hours total — 12 classes, 12 hours each</li>
+          <li>Fixed monthly class schedule, all 3 Thai seasons</li>
           <li>12 free day-passes for ice bath &amp; sauna</li>
           <li>Taught by Ratana &amp; Tai, in English</li>
         </ul>
+        <a class="btn-primary" style="display:inline-block; margin-top:24px;" href="https://forms.gle/Kv8QVsbMyKsbq6A69" target="_blank" rel="noopener">Enroll — 12 Months</a>
+      </div>
+
+      <div class="price-card">
+        <div class="eyebrow" style="color:rgba(243,238,226,0.7)">9-Month Program</div>
+        <div class="amount">฿55,000 <span>total</span></div>
+        <div class="fee-split">
+          <div><span>Cooking School Program</span><b>฿45,000</b></div>
+          <div><span>DTV Visa Assistance</span><b>฿10,000</b></div>
+        </div>
+        <ul>
+          <li>96 hours total, scheduled around your availability</li>
+          <li>Flexible — individual or small-group classes</li>
+          <li>Full DTV consultation, document prep &amp; submission</li>
+          <li>Taught by Ratana &amp; Tai, in English</li>
+        </ul>
+        <a class="btn-primary" style="display:inline-block; margin-top:24px;" href="https://forms.gle/Kv8QVsbMyKsbq6A69" target="_blank" rel="noopener">Enroll — 9 Months</a>
+      </div>
+    </div>
+
+    <div class="pricing-row" style="margin-top:32px;">
+      <div class="refund-box">
+        <h4>Visa Fee &amp; Refund Policy</h4>
+        <p>The ฿10,000 DTV visa assistance fee covers consultation, document preparation, and submission on your behalf. Because this work begins as soon as you enroll, it is <b>non-refundable</b> once we start on your case.</p>
+        <p>If your visa is not approved, your <b>Cooking School Program fee is fully refundable</b>. If an application is denied through one consulate, we'll help you reapply through another eligible consulate at no additional agency fee.</p>
       </div>
       <div class="includes">
         <h4>What's included</h4>
         <div class="item"><div class="ic">A</div><div class="desc"><b>Learn from village elders.</b> Our teachers are local experts who've cooked and taught for generations.</div></div>
-        <div class="item"><div class="ic">B</div><div class="desc"><b>Wellness, built in.</b> Twelve one-day passes for cold-plunge and sauna access alongside your cooking day.</div></div>
-        <div class="item"><div class="ic">C</div><div class="desc"><b>Visa-ready.</b> If you apply for your DTV visa yourself, we provide every school document you'll need — or our agency partner can handle it start to finish.</div></div>
+        <div class="item"><div class="ic">B</div><div class="desc"><b>Flexible scheduling.</b> We don't run a fixed group timetable — classes are arranged around your availability, sometimes alongside other students, sometimes one-on-one.</div></div>
+        <div class="item"><div class="ic">C</div><div class="desc"><b>Visa-ready.</b> Full consultation, document preparation, and submission handled on your behalf, start to finish.</div></div>
       </div>
     </div>
   </div>
@@ -795,6 +869,38 @@
         <summary>Where are you located and how do I get there?<span class="plus">+</span></summary>
         <div class="faq-body">
           <p>We are at <b>7 Moo 9, Nam Phrae, Hang Dong, Chiang Mai 50230</b> — a quiet property about 20 minutes south of the Old City in the Hang Dong district. Hang Dong is where many long-term expats and local Thais choose to live — quieter, more authentic, away from tourist crowds, and close to excellent local markets. A Grab from the Old City takes about 20 minutes and costs around 80–120 baht. <a href="https://maps.app.goo.gl/7cCEKoYTxhZJbzgB7?g_st=ic" target="_blank" rel="noopener">Open in Google Maps ↗</a></p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>What is your agency support fee?<span class="plus">+</span></summary>
+        <div class="faq-body">
+          <p>The DTV visa support fee is <b>฿10,000</b>. This fee is non-refundable because it covers the work we complete for your application. However, if your application is denied by one country or consulate, we will reapply for you through another eligible location at no additional agency fee.</p>
+          <p>Our 12-month program totals <b>฿60,000</b> — ฿50,000 for the Cooking School Program and ฿10,000 for DTV visa support and processing. Our 9-month program totals <b>฿55,000</b> — ฿45,000 for the Cooking School Program and the same ฿10,000 visa support fee.</p>
+          <p>If a visa application is unsuccessful, the Cooking School Program fee is refunded in full, while the ฿10,000 service fee remains non-refundable because the application work has already been completed.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>What are my obligations after the first year of classes?<span class="plus">+</span></summary>
+        <div class="faq-body">
+          <p>After the first year, you can continue enrolling with the school if you wish to maintain an ongoing student status and continue using the program for future DTV purposes.</p>
+          <p>Our re-enrollment options are:</p>
+          <ul>
+            <li>1 year: 60 hours of classes — ฿35,000</li>
+            <li>4 years: ฿100,000 total, paid in one payment</li>
+          </ul>
+          <p><b>Note: this is entirely optional.</b> You are under no obligation to re-enroll — it's simply available if you'd like the flexibility to continue your studies and maintain your relationship with the school while traveling in and out of Thailand.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>What are the required savings in my bank account for the DTV?<span class="plus">+</span></summary>
+        <div class="faq-body">
+          <p>Your financial evidence must meet the DTV requirements. Funds should be shown as <b>cash or savings</b>, not funds held in investments or other financial instruments. If your documents don't meet the consulate's requirements, you may be asked to resubmit additional or updated documents.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>What is the visa processing time?<span class="plus">+</span></summary>
+        <div class="faq-body">
+          <p>Visa processing time depends entirely on the Thai consulate or embassy where you submit your application. At the moment, we'd recommend allowing approximately <b>4–5 weeks</b>. We've seen some applications completed in 1–2 weeks, but timing can change depending on the specific consulate, workload, and individual application — we never want to overpromise a timeline we can't control.</p>
         </div>
       </details>
       <details class="faq-item">
