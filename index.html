@@ -235,6 +235,8 @@
   .nav.scrolled .nav-links{color:var(--ink); text-shadow:none;}
   .nav-links a{text-decoration:none; opacity:0.9; transition:opacity .2s;}
   .nav-links a:hover{opacity:1;}
+  @media (max-width:1240px){ .nav-links{gap:20px; font-size:13px;} }
+  @media (max-width:1080px){ .nav-links{display:none;} }
   .nav-cta{
     font-size:13px; font-family:'IBM Plex Mono', monospace; letter-spacing:0.06em;
     border:1px solid #fff; color:#fff; padding:9px 18px; border-radius:2px;
@@ -399,6 +401,13 @@
   .price-card .amount span{font-size:16px; color:rgba(243,238,226,0.7); font-family:'Work Sans';}
   .price-card ul{list-style:none; padding:0; margin:22px 0 0; font-size:14px; line-height:2;color:rgba(243,238,226,0.85);}
   .price-card ul li::before{content:"— "; color:var(--clay);}
+  .pay-options{margin-top:18px; padding-top:14px; border-top:1px solid rgba(243,238,226,0.2); font-size:13px; color:rgba(243,238,226,0.85);}
+  .pay-options div{display:flex; justify-content:space-between; gap:12px; margin-bottom:6px;}
+  .pay-options b{color:#fff; font-weight:500; white-space:nowrap;}
+  .pay-options p{margin:10px 0 0; font-size:12.5px; color:rgba(243,238,226,0.7);}
+  .pay-options a{color:rgba(243,238,226,0.95); border-bottom:1px solid rgba(243,238,226,0.4); text-decoration:none;}
+  .enroll-note{font-size:12.5px; color:rgba(243,238,226,0.65); margin:12px 0 0;}
+  .enroll-note a{color:rgba(243,238,226,0.9); border-bottom:1px solid rgba(243,238,226,0.4); text-decoration:none;}
   .program-grid{display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-top:36px;}
   .fee-split{
     margin-top:20px; padding-top:18px; border-top:1px solid rgba(243,238,226,0.25);
@@ -547,6 +556,7 @@
     <a href="#students">Our Students</a>
     <a href="#instagram">Instagram</a>
     <a href="#faq">FAQ</a>
+    <a href="blog.html">Blog</a>
     <a href="#visit">Visit</a>
   </div>
   <a class="nav-cta" href="https://forms.gle/Kv8QVsbMyKsbq6A69" target="_blank" rel="noopener">Enroll now</a>
@@ -711,7 +721,13 @@
           <li>12 free day-passes for ice bath &amp; sauna</li>
           <li>Taught by Ratana &amp; Tai, in English</li>
         </ul>
-        <a class="btn-primary" style="display:inline-block; margin-top:24px;" href="https://forms.gle/Kv8QVsbMyKsbq6A69" target="_blank" rel="noopener">Enroll — 12 Months</a>
+        <a class="btn-primary" style="display:inline-block; margin-top:24px;" href="https://buy.stripe.com/8x2aEW8of2le4Tl1Mt5Vu03" target="_blank" rel="noopener">Enroll &amp; Pay — 12 Months</a>
+        <div class="pay-options">
+          <div><span>Credit card (includes 4% card fee)</span><b>฿62,400</b></div>
+          <div><span>Bank transfer</span><b>฿60,000</b></div>
+          <p>For bank transfer, <a href="https://wa.me/66932720050" target="_blank" rel="noopener">ask us for our bank information</a>.</p>
+        </div>
+        <p class="enroll-note">Questions first? <a href="https://forms.gle/Kv8QVsbMyKsbq6A69" target="_blank" rel="noopener">Send us a message</a></p>
       </div>
 
       <div class="price-card">
@@ -727,7 +743,13 @@
           <li>Full DTV consultation, document prep &amp; submission</li>
           <li>Taught by Ratana &amp; Tai, in English</li>
         </ul>
-        <a class="btn-primary" style="display:inline-block; margin-top:24px;" href="https://forms.gle/Kv8QVsbMyKsbq6A69" target="_blank" rel="noopener">Enroll — 9 Months</a>
+        <a class="btn-primary" style="display:inline-block; margin-top:24px;" href="https://buy.stripe.com/dRmbJ01ZR0d671tdvb5Vu04" target="_blank" rel="noopener">Enroll &amp; Pay — 9 Months</a>
+        <div class="pay-options">
+          <div><span>Credit card (includes 4% card fee)</span><b>฿57,200</b></div>
+          <div><span>Bank transfer</span><b>฿55,000</b></div>
+          <p>For bank transfer, <a href="https://wa.me/66932720050" target="_blank" rel="noopener">ask us for our bank information</a>.</p>
+        </div>
+        <p class="enroll-note">Questions first? <a href="https://forms.gle/Kv8QVsbMyKsbq6A69" target="_blank" rel="noopener">Send us a message</a></p>
       </div>
     </div>
 
@@ -905,6 +927,13 @@
         </div>
       </details>
       <details class="faq-item">
+        <summary>How can I pay?<span class="plus">+</span></summary>
+        <div class="faq-body">
+          <p>You can pay <b>online by credit card</b> using the Enroll &amp; Pay buttons above — card payments include a <b>4% card processing fee</b> (฿62,400 for the 12-month program, ฿57,200 for the 9-month program).</p>
+          <p>You can also pay by <b>bank transfer</b> with no card fee (฿60,000 for the 12-month program, ฿55,000 for the 9-month program). Please <a href="https://wa.me/66932720050" target="_blank" rel="noopener">message us on WhatsApp</a> or email <a href="mailto:fermentspacecookingschool@gmail.com">fermentspacecookingschool@gmail.com</a> and we'll send you our bank information.</p>
+        </div>
+      </details>
+      <details class="faq-item">
         <summary>How do I enroll or ask questions?<span class="plus">+</span></summary>
         <div class="faq-body">
           <p>The fastest way: <b>WhatsApp us at <a href="tel:+66932720050">093-272-0050</a></b> and we'll personally walk you through the program, visa paperwork, and any questions. You can also <a href="https://chat.whatsapp.com/EuBAKSG5SSuKim0lvFAaxJ?s=cl&amp;p=i&amp;mlu=0&amp;ilr=0&amp;amv=2" target="_blank" rel="noopener">join our free DTV Community WhatsApp Group</a> to connect with current students, get real answers from people already living the program, and stay updated on class dates. Email us at <a href="mailto:fermentspacecookingschool@gmail.com">fermentspacecookingschool@gmail.com</a> anytime.</p>
@@ -982,6 +1011,7 @@
   <div class="wrap" style="margin-top:18px; display:flex; gap:20px;">
     <a class="small" href="https://www.facebook.com/fermentspacecooking" target="_blank" rel="noopener">Facebook</a>
     <a class="small" href="https://www.instagram.com/fermentspacecooking" target="_blank" rel="noopener">Instagram</a>
+    <a class="small" href="blog.html">Blog</a>
   </div>
 </footer>
 
